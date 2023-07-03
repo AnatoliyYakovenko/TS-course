@@ -15,7 +15,7 @@
 // TASK 2
 
 let age = 50;
-let name1 = 'Max';
+let name1 = 'Maxx';
 let toggle = true;
 let empty = null;
 let notInitialize = undefined;
