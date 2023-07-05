@@ -94,21 +94,103 @@
 //   status: 'close',
 // }
 
-class A{
-  protected someProperty ="str"
-}
+// class A{
+//   protected someProperty ="str"
+// }
 
-class B extends A{
-  showProperty(){
-    console.log(this.someProperty);
+// class B extends A{
+//   showProperty(){
+//     console.log(this.someProperty);
     
+//   }
+// }
+// const a = new A();
+// const b = new B();
+
+// b.showProperty();
+
+// class House{
+//   private street : string;
+//   private tenants: string[]=[];
+
+//   constructor(n: string) {
+//     this.street=n;
+//   }
+//   public showAddress(this: House){
+//   console.log('Address:' +this.street);
+//   }
+//   public addTenants(tenant: string){
+//     this.tenants.push(tenant);
+//   }
+//   public showTenants(){
+//     console.log(this.tenants);
+//   }
+// }
+// const house = new House('Malyshko');
+// house.addTenants('Anatoliy');
+// house.addTenants('Juliya');
+
+// house.showTenants();
+// house.showAddress();
+
+// ********** readonly && short initialization ***********
+
+// class House {
+//   constructor (private readonly type: string, private street: string) {
+//   }
+//   changeType(type: string){
+//     this.type = type;
+//   }
+// }
+class House{
+  private tenants: string[]=[];
+
+  constructor(private readonly type: string, private street: string) {}
+
+  public showAddress(this: House){
+  console.log('Address:' +this.street);
+  }
+  public showType(this: House){
+    console.log('House Type:' + this.type);
+  }
+  public addTenant(tenant: string){
+    this.tenants.push(tenant);
+  }
+  public showTenants(){
+
+    console.log(this.tenants);
   }
 }
-const a = new A();
-const b = new B();
 
-// a.someProperty;
-// b.someProperty;
+class StoneHouse extends House{
+ private chargeOfTheHouse: string;
 
-b.showProperty();
+ constructor(street: string, generalTalent: string){
+   super('stone', street);
+   this.chargeOfTheHouse = generalTalent;
+   this.addTenant(generalTalent);
+ }
+public showTenants(): void {
+  console.log('General:' + this.chargeOfTheHouse);
+  super.showTenants();
+}
+}
+const stoneHouse = new StoneHouse('Stone-world', 'Max');
+
+stoneHouse.addTenant("Alina");
+
+stoneHouse.addTenant("Tolya");
+
+stoneHouse.addTenant("Juliya");
+
+
+stoneHouse.showTenants();
+stoneHouse.showType();
+stoneHouse.showAddress();
+
+
+
+
+
+
 
